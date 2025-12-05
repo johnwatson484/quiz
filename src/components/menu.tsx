@@ -1,17 +1,22 @@
-import { useState } from 'react'
-import JoinGame from './join-game.tsx'
+import { useGame } from '../context/GameContext'
 
 function Menu() {
-  const [showJoinGame, setShowJoinGame] = useState(false)
-
-  if (showJoinGame) {
-    return <JoinGame />
-  }
+  const { setView } = useGame()
 
   return (
     <>
-      <button type="button" className="btn btn-primary">Host new game</button>
-      <button type="button" className="btn btn-secondary" onClick={() => setShowJoinGame(true)}>
+      <button 
+        type="button" 
+        className="btn btn-primary me-2"
+        onClick={() => setView('host')}
+      >
+        Host new game
+      </button>
+      <button 
+        type="button" 
+        className="btn btn-secondary"
+        onClick={() => setView('join')}
+      >
         Join game
       </button>
     </>
